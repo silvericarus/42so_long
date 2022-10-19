@@ -6,7 +6,7 @@
 /*   By: albgonza <albgonza@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:42:32 by albgonza          #+#    #+#             */
-/*   Updated: 2022/10/19 15:23:01 by albgonza         ###   ########.fr       */
+/*   Updated: 2022/10/19 18:39:22 by albgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	call_error(int flag, t_game *game, int fd)
 		ft_printf("\033[0;31m Error: File Can't Be Opened Right.\033[0m\n");
 	}
 	if (flag == 3)
-		ft_printf("\033[0;31m Error: There's Nothing In The File.\033[0m\n");
+		ft_printf("\033[0;31m Error: Map Error.\033[0m\n");
 	if (flag == 4)
 		ft_printf("\033[0;31m Error: World Can't Be Plain.\033[0m\n");
 	if (flag == 5)

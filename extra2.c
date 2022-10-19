@@ -6,7 +6,7 @@
 /*   By: albgonza <albgonza@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 13:34:28 by albgonza          #+#    #+#             */
-/*   Updated: 2022/10/19 15:25:05 by albgonza         ###   ########.fr       */
+/*   Updated: 2022/10/19 19:21:41 by albgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	load_asset2(char chr, int x, int y, t_game *game)
 	}
 	else if (chr && chr == 'E')
 		img = game->map.exit.img;
+	else if (ft_isprint(chr) && (COMPARE_CHAR2 || COMPARE_NL || COMPARE_CHAR1))
+		call_error(0, game, 0);
 	if (img)
 		mlx_image_to_window(game->mlx, img, y * 32, x * 32);
 	else if (chr != '\0' && chr != '\n')

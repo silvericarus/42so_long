@@ -6,7 +6,7 @@
 /*   By: albgonza <albgonza@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 13:18:03 by albgonza          #+#    #+#             */
-/*   Updated: 2022/10/19 15:20:30 by albgonza         ###   ########.fr       */
+/*   Updated: 2022/10/19 19:01:50 by albgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@
 # include <limits.h>
 # include <math.h>
 # include <sys/wait.h>
+# define COMPARE_CHAR1 "chr != 'E' || chr != 'P' || chr != '1'"
+# define COMPARE_CHAR2 "chr != '0' || chr != 'C'"
+# define COMPARE_NL "chr != '\n' || chr != '\0'"
 
 typedef struct s_point
 {
@@ -83,5 +86,6 @@ void	load_asset(char chr, int x, int y, t_game *game);
 void	load_asset2(char chr, int x, int y, t_game *game);
 void	init_mlx(t_game *game);
 void	free_all(t_game *game, int flag);
+int		check_valid_chars(char *str);
 
 #endif
