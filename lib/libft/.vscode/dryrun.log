@@ -1,0 +1,5 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory `/System/Volumes/Data/sgoinfre/goinfre/Perso/albgonza/libft'
+make: Nothing to be done for `all'.
+make: Leaving directory `/System/Volumes/Data/sgoinfre/goinfre/Perso/albgonza/libft'
+ 
