@@ -6,7 +6,7 @@
 /*   By: albgonza <albgonza@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 13:34:28 by albgonza          #+#    #+#             */
-/*   Updated: 2022/10/19 19:21:41 by albgonza         ###   ########.fr       */
+/*   Updated: 2022/10/20 17:32:42 by albgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,8 @@ void	init_mlx(t_game *game)
 	if (fd == -1)
 		call_error(2, game, fd);
 	game->mlx = mlx_init((game->map.map_width - 1) * 32,
-			game->map.map_height * 32, "so_long", true);
+			game->map.map_height * 32, ft_strjoin("so_long - ",
+				ft_strtrim(game->map.path, ".ber")), true);
 	game->g_img = mlx_new_image(game->mlx,
 			(game->map.map_width - 1) * 32, game->map.map_height * 32);
 	game->player.pj = mlx_texture_to_image(game->mlx,

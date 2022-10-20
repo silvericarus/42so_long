@@ -6,7 +6,7 @@
 /*   By: albgonza <albgonza@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 12:32:02 by albgonza          #+#    #+#             */
-/*   Updated: 2022/10/19 18:35:20 by albgonza         ###   ########.fr       */
+/*   Updated: 2022/10/20 17:20:29 by albgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,38 +65,31 @@ int	check_last_wall(t_game *game)
 {
 	int	i;
 	int	j;
-	int	wall;
 
 	i = game->map.map_height - 1;
 	j = 0;
-	wall = 0;
-	while (j < ft_strlen(game->map.mtrx[i]) - 1)
+	while (j < game->map.map_width - 1)
 	{
-		if (ft_strchr(&game->map.mtrx[i][j], '1'))
-			j++;
-		else
+		if (game->map.mtrx[i][j] != '1')
 			return (0);
+		j++;
 	}
-	wall = 1;
-	return (wall);
+	return (1);
 }
 
 int	check_front_wall(t_game *game)
 {
 	int	i;
 	int	j;
-	int	wall;
 
 	j = 0;
-	wall = 1;
-	while (j < ft_strlen(game->map.mtrx[0]) - 1)
+	while (j < game->map.map_width - 1)
 	{
-		if (ft_strchr(&game->map.mtrx[0][j], '1'))
-			j++;
-		else
+		if (game->map.mtrx[0][j] != '1')
 			return (0);
+		j++;
 	}
-	return (wall);
+	return (1);
 }
 
 int	check_side_wall(t_game *game)
@@ -105,11 +98,11 @@ int	check_side_wall(t_game *game)
 	int	j;
 
 	i = 1;
-	j = game->map.map_width - 1;
+	j = game->map.map_width - 2;
 	while (i < game->map.map_height - 1)
 	{
-		if (!ft_strchr(&game->map.mtrx[i][0], '1')
-			&& !ft_strchr(&game->map.mtrx[i][j], '1'))
+		if (game->map.mtrx[i][0] != '1'
+			|| game->map.mtrx[i][j] != '1')
 			return (0);
 		else
 			i++;

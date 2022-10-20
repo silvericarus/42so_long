@@ -6,7 +6,7 @@
 #    By: albgonza <albgonza@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/01 17:48:39 by albgonza          #+#    #+#              #
-#    Updated: 2022/10/19 18:15:09 by albgonza         ###   ########.fr        #
+#    Updated: 2022/10/20 17:07:18 by albgonza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,8 +24,7 @@ SRC	:= so_long.c \
 				check.c    \
 				keys.c     \
 				extra.c  \
-				extra2.c \
-				booleans.c
+				extra2.c
 
 OBJS	:= $(SRC:.c=.o)
 CC	= clang
