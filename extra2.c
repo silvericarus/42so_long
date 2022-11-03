@@ -6,7 +6,7 @@
 /*   By: albgonza <albgonza@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 13:34:28 by albgonza          #+#    #+#             */
-/*   Updated: 2022/10/20 17:32:42 by albgonza         ###   ########.fr       */
+/*   Updated: 2022/10/27 18:50:28 by albgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,32 +64,23 @@ void	generate_map(t_game *game)
 		x++;
 	}
 	mlx_image_to_window(game->mlx,
-		game->player.pj, game->player.player_position.y,
+		game->player.pj.img, game->player.player_position.y,
 		game->player.player_position.x);
 }
 
 void	init_mlx(t_game *game)
 {
-	int	fd;
+	int				fd;
 
 	fd = open("./assets/pj.png", O_RDONLY);
 	if (fd == -1)
 		call_error(2, game, fd);
+	close(fd);
 	game->mlx = mlx_init((game->map.map_width - 1) * 32,
-			game->map.map_height * 32, ft_strjoin("so_long - ",
-				ft_strtrim(game->map.path, ".ber")), true);
+			(game->map.map_height + 1) * 32, "so_long", true);
 	game->g_img = mlx_new_image(game->mlx,
 			(game->map.map_width - 1) * 32, game->map.map_height * 32);
-	game->player.pj = mlx_texture_to_image(game->mlx,
-			mlx_load_png("./assets/pj.png"));
-	game->map.collective.img = mlx_texture_to_image(game->mlx,
-			mlx_load_png("./assets/gem.png"));
-	game->map.exit.img = mlx_texture_to_image(game->mlx,
-			mlx_load_png("./assets/stairs.png"));
-	game->map.bg.img = mlx_texture_to_image(game->mlx,
-			mlx_load_png("./assets/bg.png"));
-	game->map.wall.img = mlx_texture_to_image(game->mlx,
-			mlx_load_png("./assets/wall.png"));
+	init_images(game);
 	mlx_key_hook(game->mlx, &my_hook, game);
 	generate_map(game);
 	mlx_image_to_window(game->mlx, game->g_img, 0, 0);
@@ -107,13 +98,16 @@ void	free_all(t_game *game, int flag)
 {
 	int	i;
 
-	i = game->map.map_height;
-	while (i >= 0)
+	if (game->map.mtrx)
 	{
-		free(game->map.mtrx[i]);
-		i--;
+		i = game->map.map_height;
+		while (i >= 0)
+		{
+			free(game->map.mtrx[i]);
+			i--;
+		}
+		free(game->map.mtrx);
 	}
-	free(game->map.mtrx);
 	if (flag == 0)
 		exit(EXIT_FAILURE);
 	else

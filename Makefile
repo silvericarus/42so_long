@@ -6,7 +6,7 @@
 #    By: albgonza <albgonza@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/01 17:48:39 by albgonza          #+#    #+#              #
-#    Updated: 2022/10/20 17:07:18 by albgonza         ###   ########.fr        #
+#    Updated: 2022/10/28 11:44:06 by albgonza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,22 +24,25 @@ SRC	:= so_long.c \
 				check.c    \
 				keys.c     \
 				extra.c  \
-				extra2.c
+				extra2.c \
+				extra3.c
 
 OBJS	:= $(SRC:.c=.o)
 CC	= clang
 CFLAGS	= -Wall -Werror -Wextra
 RM	= rm -rf
 
-all: libft libmlx $(NAME)
+all: norm libft libmlx $(NAME)
 
 libft:
-	@$(MAKE) -C $(LIBFT)
 	@echo "$(COLOR_GREEN)$(BOLD)Compiling libft 📔$(RESET)"
+	@$(MAKE) -C $(LIBFT)
+	
 
 libmlx:
-	@$(MAKE) -C $(LIBMLX)
 	@echo "$(COLOR_GREEN)$(BOLD)Compiling MLX42 🎥$(RESET)"
+	@$(MAKE) -C $(LIBMLX)
+	
 
 $(NAME) : $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(LFLAGS) $(LIBS) $(HEADER) -o $(NAME)
@@ -48,17 +51,23 @@ $(NAME) : $(OBJS)
 	$(CC) $(HEADER) -o $@ -c $<
 
 clean:
+	@echo "$(COLOR_GREEN)$(BOLD)Cleaning all '.o' items 🧹$(RESET)"
 	@$(RM) $(OBJS)
 	@$(MAKE) -C $(LIBFT) clean
 	@$(MAKE) -C $(LIBMLX) clean
-	@echo "$(COLOR_GREEN)$(BOLD)Cleaning all '.o' items 🧹$(RESET)"
+	
 
 fclean: clean
+	@echo "$(COLOR_GREEN)$(BOLD)Cleaning the library 📚$(RESET)"
 	@$(RM) $(NAME)
 	@$(MAKE) -C $(LIBMLX) fclean
 	@$(MAKE) -C $(LIBFT) fclean
-	@echo "$(COLOR_GREEN)$(BOLD)Cleaning all items ⛏$(RESET)"
+	
 
 re: fclean all
+
+norm: 
+	norminette *.c
+	norminette *.h
 
 .PHONY: all bonus clean fclean re

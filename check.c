@@ -6,7 +6,7 @@
 /*   By: albgonza <albgonza@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 12:32:02 by albgonza          #+#    #+#             */
-/*   Updated: 2022/10/20 17:20:29 by albgonza         ###   ########.fr       */
+/*   Updated: 2022/10/25 15:50:06 by albgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,17 @@ int	check_items(t_game *game)
 	c = 0;
 	while (game->map.mtrx[i] != NULL)
 	{
-		if (ft_strchr(game->map.mtrx[i], 'P'))
-			p++;
+		p = plus_when_player(game, p, i);
+		if (ft_strchr(game->map.mtrx[i], 'P')
+			!= ft_strrchr(game->map.mtrx[i], 'P'))
+			p = 0;
 		if (ft_strchr(game->map.mtrx[i], 'E'))
 			e = 1;
 		if (ft_strchr(game->map.mtrx[i], 'C'))
 			c = 1;
 		i++;
 	}
-	if (!e || !c || p != 1)
+	if (!e || !c || !p || p > 1)
 		return (0);
 	else
 		return (1);
@@ -55,7 +57,7 @@ int	check_map(t_game *game)
 			return (0);
 	}
 	if (check_front_wall(game) && check_last_wall(game)
-		&& check_side_wall(game) && check_items(game))
+		&& check_items(game) && check_side_wall(game))
 		return (1);
 	else
 		return (0);
@@ -66,7 +68,7 @@ int	check_last_wall(t_game *game)
 	int	i;
 	int	j;
 
-	i = game->map.map_height - 1;
+	i = game->map.map_height;
 	j = 0;
 	while (j < game->map.map_width - 1)
 	{
@@ -99,7 +101,7 @@ int	check_side_wall(t_game *game)
 
 	i = 1;
 	j = game->map.map_width - 2;
-	while (i < game->map.map_height - 1)
+	while (i < game->map.map_height)
 	{
 		if (game->map.mtrx[i][0] != '1'
 			|| game->map.mtrx[i][j] != '1')

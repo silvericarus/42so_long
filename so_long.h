@@ -6,7 +6,7 @@
 /*   By: albgonza <albgonza@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 13:18:03 by albgonza          #+#    #+#             */
-/*   Updated: 2022/10/19 19:01:50 by albgonza         ###   ########.fr       */
+/*   Updated: 2022/10/27 18:49:27 by albgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ typedef struct s_point
 
 typedef struct s_img
 {
-	mlx_image_t	*img;
+	mlx_image_t		*img;
+	mlx_texture_t	*txt;
 }t_img;
 
 typedef struct s_map
@@ -56,7 +57,7 @@ typedef struct s_player
 	int			total_collectibles;
 	int			actual_collectibles;
 	int			status;
-	mlx_image_t	*pj;
+	t_img		pj;
 	t_point		player_position;
 	int			moves;
 }t_player;
@@ -87,5 +88,7 @@ void	load_asset2(char chr, int x, int y, t_game *game);
 void	init_mlx(t_game *game);
 void	free_all(t_game *game, int flag);
 int		check_valid_chars(char *str);
+int		plus_when_player(t_game *game, int p, int index);
+void	init_images(t_game *game);
 
 #endif

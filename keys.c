@@ -6,7 +6,7 @@
 /*   By: albgonza <albgonza@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 13:03:03 by albgonza          #+#    #+#             */
-/*   Updated: 2022/10/19 15:20:49 by albgonza         ###   ########.fr       */
+/*   Updated: 2022/10/27 18:08:02 by albgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void	movement_left(t_game *game)
 		open_door(game);
 	else
 	{
-		game->player.pj->instances[0].x -= 32;
+		game->player.pj.img->instances[0].x -= 32;
 		game->player.x--;
-		printf("Movements: %d\n", ++game->player.moves);
+		ft_printf("Movements: %d\n", ++game->player.moves);
 	}
 }
 
@@ -34,9 +34,9 @@ void	movement_right(t_game *game)
 		open_door(game);
 	else
 	{
-		game->player.pj->instances[0].x += 32;
+		game->player.pj.img->instances[0].x += 32;
 		game->player.x++;
-		printf("Movements: %d\n", ++game->player.moves);
+		ft_printf("Movements: %d\n", ++game->player.moves);
 	}
 }
 
@@ -48,9 +48,9 @@ void	movement_up(t_game *game)
 		open_door(game);
 	else
 	{
-		game->player.pj->instances[0].y -= 32;
+		game->player.pj.img->instances[0].y -= 32;
 		game->player.y--;
-		printf("Movements: %d\n", ++game->player.moves);
+		ft_printf("Movements: %d\n", ++game->player.moves);
 	}
 }
 
@@ -62,9 +62,9 @@ void	movement_down(t_game *game)
 		open_door(game);
 	else
 	{
-		game->player.pj->instances[0].y += 32;
+		game->player.pj.img->instances[0].y += 32;
 		game->player.y++;
-		printf("Movements: %d\n", ++game->player.moves);
+		ft_printf("Movements: %d\n", ++game->player.moves);
 	}
 }
 
