@@ -32,7 +32,7 @@ CC	= clang
 CFLAGS	= -Wall -Werror -Wextra
 RM	= rm -rf
 
-all: norm libft libmlx $(NAME)
+all: libft libmlx $(NAME)
 
 libft:
 	@echo "$(COLOR_GREEN)$(BOLD)Compiling libft 📔$(RESET)"
@@ -65,9 +65,5 @@ fclean: clean
 	
 
 re: fclean all
-
-norm: 
-	norminette *.c
-	norminette *.h
 
 .PHONY: all bonus clean fclean re
