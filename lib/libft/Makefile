@@ -32,7 +32,12 @@ SRCS 		= \
 				ft_putchar_fd.c\
 				ft_putendl_fd.c\
 				ft_striteri.c\
-				ft_strmapi.c \
+				ft_strmapi.c\
+				ft_arrsize.c\
+				ft_atoli.c\
+				ft_strtrim_left.c\
+				ft_matrix_size.c\
+				ft_abs.c\
 
 SRCSBONUS	= \
 				ft_lstnew_bonus.c\

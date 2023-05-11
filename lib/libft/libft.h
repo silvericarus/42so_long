@@ -6,7 +6,7 @@
 /*   By: albgonza <albgonza@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 12:42:09 by albgonza          #+#    #+#             */
-/*   Updated: 2022/10/19 18:08:26 by albgonza         ###   ########.fr       */
+/*   Updated: 2023/01/13 16:34:17 by albgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
-# include <sys/stat.h>
-# include <fcntl.h>
 
 //Primera parte
 int		ft_atoi(const char *str);
@@ -78,8 +76,12 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 int		ft_printf(char const *idn, ...);
 //get_next_line
 char	*get_next_line(int fd);
-char	*ft_strchr_gnl(const char *s, int c);
-char	*ft_strjoin_gnl(char const *s1, char const *s2);
-size_t	ft_strlen_gnl(const char *str);
+
+//push_swap
+size_t	ft_arrsize(void *arr);
+size_t	ft_matrix_size(char **arr);
+long	ft_atoli(const char *str);
+char	*ft_strtrim_left(char const *s1, char const *set);
+int		ft_abs(int nbr);
 
 #endif

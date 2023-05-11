@@ -20,11 +20,9 @@ La función ft_memmove() devuelve un puntero a dest.
 */
 void	*ft_memmove(void *dst, const void *src, size_t length)
 {
-	size_t	cont;
 	char	*dest;
 	char	*source;
 
-	cont = 0;
 	dest = dst;
 	source = (void *)src;
 	if (dest > source)

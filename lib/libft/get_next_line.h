@@ -6,7 +6,7 @@
 /*   By: albgonza <albgonza@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 15:00:25 by albgonza          #+#    #+#             */
-/*   Updated: 2022/06/21 18:40:50 by albgonza         ###   ########.fr       */
+/*   Updated: 2022/06/08 11:01:00 by albgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@
 #  define BUFFER_SIZE = 70
 # endif
 
-char	*ft_strchr_gnl(const char *s, int c);
-char	*ft_strjoin_gnl(char const *s1, char const *s2);
-size_t	ft_strlen_gnl(const char *str);
+char	*ft_strchr(const char *s, int c);
+char	*ft_strjoin(char const *s1, char const *s2);
+size_t	ft_strlen(const char *str);
 char	*get_next_line(int fd);
 
 #endif
